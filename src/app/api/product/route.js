@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-
+//Menampilkan
 export async function GET() {
   try {
     const products = await prisma.produk.findMany({
@@ -38,15 +38,16 @@ export async function POST(request) {
     const body = await request.json();
     const { NamaProduk, Deskripsi, Harga, Stok, Kategori } = body;
 
-    const product = await prisma.produk.create({
-      data: {
-        NamaProduk: NamaProduk,
-        Deskripsi: Deskripsi,
-        Harga: Harga,
-        Stok: Stok,
-        Kategori: Kategori,
-      },
-    });
+const product = await prisma.produk.create({
+  data: {
+    NamaProduk,
+    Deskripsi,
+    Harga: parseFloat(Harga),
+    Stok: parseInt(Stok),
+    Kategori,
+  },
+});
+
 
     return NextResponse.json({
       success: true,
@@ -57,47 +58,6 @@ export async function POST(request) {
     });
   } catch (error) {
     console.error("Error adding product:", error);
-
-    return NextResponse.json({
-      success: false,
-      message: "Internal Server Error",
-      error: error.message,
-    }, {
-      status: 500,
-    });
-  } finally {
-    await prisma.$disconnect();
-  }
-}
-// DELETE
-export async function DELETE(request) {
-  try {
-    const ProdukID = parseInt(request?.query?.id, 10);
-
-    if (isNaN(ProdukID)) {
-      return NextResponse.json({
-        success: false,
-        message: "Invalid Product ID",
-      }, {
-        status: 400, // Bad Request
-      });
-    }
-
-    const deletedProduct = await prisma.produk.delete({
-      where: {
-        ProdukID: ProdukID,
-      },
-    });
-
-    return NextResponse.json({
-      success: true,
-      message: "Product deleted successfully",
-      data: deletedProduct,
-    }, {
-      status: 200,
-    });
-  } catch (error) {
-    console.error("Error deleting product:", error);
 
     return NextResponse.json({
       success: false,

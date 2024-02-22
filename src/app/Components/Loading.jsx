@@ -1,4 +1,3 @@
-// src/app/Dashboard/Components/Loading.js
 import { Skeleton } from '@mui/material';
 
 const Loading = ({ tableWidth, tableHeight }) => {

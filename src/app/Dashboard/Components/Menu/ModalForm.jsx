@@ -1,197 +1,105 @@
-import { useState } from 'react';
+// AddModal.js
+import React, { useState } from 'react';
 
-export default function TambahProduk() {
-  const initialFormData = {
+const AddModal = ({ isOpen, onClose, onAdd }) => {
+  const [newData, setNewData] = useState({
     NamaProduk: '',
     Deskripsi: '',
     Harga: '',
     Stok: '',
     Kategori: '',
-  };
-
-  const [formData, setFormData] = useState(initialFormData);
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [isFormSubmitted, setFormSubmitted] = useState(false);
-  const [validation, setValidation] = useState({});
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-    setValidation((prevValidation) => ({
-      ...prevValidation,
-      [name]: '',
-    }));
+    setNewData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-
-const handleSubmit = async () => {
-  setFormSubmitted(true);
-  const newValidation = {};
-  Object.keys(formData).forEach((key) => {
-    if (formData[key] === '') {
-      newValidation[key] = 'Harus diisi';
-    }
-  });
-
-  if (Object.keys(newValidation).length > 0) {
-    setValidation(newValidation);
-    return;
-  }
-
-  try {
-    const parsedHarga = parseFloat(formData.Harga);
-    const parsedStok = parseFloat(formData.Stok);
-    const response = await fetch('/api/product', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...formData,
-        Harga: parsedHarga || 0,
-        Stok: parsedStok || 0,
-      }),
+  const handleAdd = () => {
+    onAdd(newData);
+    setNewData({
+      NamaProduk: '',
+      Deskripsi: '',
+      Harga: '',
+      Stok: '',
+      Kategori: '',
     });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setFormData(initialFormData);
-
-      setModalOpen(false);
-      alert('Produk berhasil ditambahkan!');
-    } else {
-      alert(data.message);
-    }
-  } catch (error) {
-    console.error('Error adding product:', error);
-    alert('Terjadi Kesalahan Server. Silakan coba lagi nanti.');
-  } finally {
-    // Reset status pengiriman formulir
-    setFormSubmitted(false);
-  }
-};
-
-// ...
-
+  };
 
   return (
-    <div>
-      <button
-        type="button"
-        className="bg-green-500 text-white py-2 px-4 rounded-lg mb-4"
-        onClick={() => setModalOpen(true)}
-      >
-        Tambahkan Menu
-      </button>
-
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Tambah Produk</h2>
-            <form>
-              <div className="mb-4">
-                <label htmlFor="NamaProduk">Nama Produk:</label>
-                <input
-                  type="text"
-                  id="NamaProduk"
-                  name="NamaProduk"
-                  value={formData.NamaProduk}
-                  onChange={handleChange}
-                  className="border rounded p-2 w-full"
-                  required
-                />
-                {isFormSubmitted && validation.NamaProduk && (
-                  <p className="text-red-500">{validation.NamaProduk}</p>
-                )}
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="Deskripsi">Deskripsi Produk:</label>
-                <textarea
-                  id="Deskripsi"
-                  name="Deskripsi"
-                  value={formData.Deskripsi}
-                  onChange={handleChange}
-                  className="border rounded p-2 w-full"
-                  required
-                ></textarea>
-                {isFormSubmitted && validation.Deskripsi && (
-                  <p className="text-red-500">{validation.Deskripsi}</p>
-                )}
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="Harga">Harga Produk:</label>
-                <input
-                  type="number"
-                  id="Harga"
-                  name="Harga"
-                  value={formData.Harga}
-                  onChange={handleChange}
-                  className="border rounded p-2 w-full"
-                  required
-                />
-                {isFormSubmitted && validation.Harga && (
-                  <p className="text-red-500">{validation.Harga}</p>
-                )}
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="Stok">Stok Produk:</label>
-                <input
-                  type="number"
-                  id="Stok"
-                  name="Stok"
-                  value={formData.Stok}
-                  onChange={handleChange}
-                  className="border rounded p-2 w-full"
-                  required
-                />
-                {isFormSubmitted && validation.Stok && (
-                  <p className="text-red-500">{validation.Stok}</p>
-                )}
-              </div>
-
-              <div className="mb-4">
-                <label htmlFor="Kategori">Kategori Produk:</label>
-                <input
-                  type="text"
-                  id="Kategori"
-                  name="Kategori"
-                  value={formData.Kategori}
-                  onChange={handleChange}
-                  className="border rounded p-2 w-full"
-                  required
-                />
-                {isFormSubmitted && validation.Kategori && (
-                  <p className="text-red-500">{validation.Kategori}</p>
-                )}
-              </div>
-
-              <div className="flex">
-                <button
-                  type="button"
-                  className="bg-blue-500 text-white py-2 px-4 rounded"
-                  onClick={handleSubmit}
-                >
-                  Tambah Produk
-                </button>
-                <button
-                  type="button"
-                  className="bg-gray-400 text-white py-2 px-4 rounded ml-2"
-                  onClick={() => setModalOpen(false)}
-                >
-                  Tutup Modal
-                </button>
-              </div>
-            </form>
+    <div className={`modal ${isOpen ? 'block' : 'hidden'}`}>
+      <div className="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+      <div className="modal-container fixed w-full h-full top-0 left-0 flex items-center justify-center">
+        <div className="modal-content bg-slate-200 w-1/3 p-4 rounded-lg shadow-lg">
+          <div className="flex justify-end">
+            <button className="text-red-500 hover:text-red-700" onClick={onClose}>
+              Close
+            </button>
           </div>
+          <h2 className="text-2xl font-bold text-center justify-center underline mb-4">Tambahkan Produk</h2>
+          <form className="space-y-4">
+            <div className="flex flex-col">
+              <label className="text-sm font-medium">Nama Produk:</label>
+              <input
+                type="text"
+                name="NamaProduk"
+                value={newData.NamaProduk}
+                onChange={handleChange}
+                className="border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-sm font-medium">Deskripsi:</label>
+              <input
+                type="text"
+                name="Deskripsi"
+                value={newData.Deskripsi}
+                onChange={handleChange}
+                className="border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-sm font-medium">Harga:</label>
+              <input
+                type="text"
+                name="Harga"
+                value={newData.Harga}
+                onChange={handleChange}
+                className="border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-sm font-medium">Stok:</label>
+              <input
+                type="text"
+                name="Stok"
+                value={newData.Stok}
+                onChange={handleChange}
+                className="border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-sm font-medium">Kategori:</label>
+              <input
+                type="text"
+                name="Kategori"
+                value={newData.Kategori}
+                onChange={handleChange}
+                className="border rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring focus:border-blue-300"
+              />
+            </div>
+            <button
+              type="button"
+              className="bg-blue-500 text-white py-2 px-4 mt-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
+              onClick={handleAdd}
+            >
+              Tambah Produk
+            </button>
+          </form>
         </div>
-      )}
+      </div>
     </div>
   );
-}
+};
+
+export default AddModal;
