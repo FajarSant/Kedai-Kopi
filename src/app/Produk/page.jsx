@@ -1,11 +1,9 @@
 // ProductList.js
 "use client"
 import React, { useEffect, useState } from 'react';
-import ProductCard from './ProdukCard';
-import Menu from "./Menu"
-import Header from "./Header"
+import ProductCard from './Components/ProdukCard';
 
-const ProductList = () => {
+const Product = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -24,10 +22,8 @@ const ProductList = () => {
 
   return (
     <div>
-      <Header />
-      <div className="p-4"><Menu /></div>
-        {/* <h1 className=' font-bold ml-4 sm:ml-10'>PRODUCT</h1> */}
-      <div className="container mx-auto h-full my-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2 sm:p-4">
+      <div className="p-4">Menu</div>
+      <div className="container mx-auto h-full my-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map((product) => (
           <ProductCard key={product.ProdukID} product={product} />
         ))}
@@ -36,4 +32,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default Product;

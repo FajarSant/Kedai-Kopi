@@ -9,7 +9,7 @@ const UserActionsButton = async () => {
 
   return (
     <div>
-      <Link href={actionUrl} className='text-white text-base md:text-xl lg:text-3xl xl:text-3xl'>{actionLabel}</Link>
+      <Link href={actionUrl} className=' text-base md:text-xl lg:text-3xl xl:text-3xl'>{actionLabel}</Link>
     </div>
   );
 };

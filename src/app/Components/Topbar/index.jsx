@@ -6,8 +6,8 @@ import UserActionsButton from './UserActionsButton';
 import SearchBar from './Searchbar'; 
 const TopBar = () => {
   return (
-    <div className="bg-green-500 text-2xl md:text-xl lg:text-3xl xl:text-3xl text-white p-3 md:p-3x flex justify-between items-center">
-      <div className="font-bold text-lg md:text-xl lg:text-3xl xl:text-3xl hidden sm:block">
+    <div className=" bg-slate-100 text-2xl md:text-xl lg:text-3xl xl:text-3xl text-black p-3 md:p-3x flex justify-between items-center border-b-2 shadow-sm">
+      <div className="font-bold text-lg md:text-xl lg:text-3xl xl:text-3xl hidden sm:block ">
         Your Brand
       </div>
       <SearchBar />
