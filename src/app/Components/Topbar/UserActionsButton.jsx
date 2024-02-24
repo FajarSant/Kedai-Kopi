@@ -5,7 +5,7 @@ import { authUserSession } from "../../libs/auth-libs";
 const UserActionsButton = async () => {
   const user = await authUserSession();
   const actionLabel = user ? ` ${user.name}` : "Sign In";
-  const actionUrl = user ? "/api/auth/signout" : "/api/auth/signin";
+  const actionUrl = user ? "/api/auth/signout" : "/signin";
 
   return (
     <div>

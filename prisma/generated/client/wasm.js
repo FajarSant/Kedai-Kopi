@@ -112,7 +112,9 @@ exports.Prisma.UserScalarFieldEnum = {
   Nama: 'Nama',
   Email: 'Email',
   PasswordHash: 'PasswordHash',
-  Role: 'Role'
+  Role: 'Role',
+  Alamat: 'Alamat',
+  JenisKelamin: 'JenisKelamin'
 };
 
 exports.Prisma.ProdukScalarFieldEnum = {
@@ -150,6 +152,11 @@ exports.Prisma.ReservasiScalarFieldEnum = {
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 exports.KategoriEnum = exports.$Enums.KategoriEnum = {
   MAKANAN: 'MAKANAN',

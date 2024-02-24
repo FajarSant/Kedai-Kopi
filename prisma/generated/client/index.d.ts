@@ -1342,6 +1342,8 @@ export namespace Prisma {
     Email: string | null
     PasswordHash: string | null
     Role: string | null
+    Alamat: string | null
+    JenisKelamin: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1350,6 +1352,8 @@ export namespace Prisma {
     Email: string | null
     PasswordHash: string | null
     Role: string | null
+    Alamat: string | null
+    JenisKelamin: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1358,6 +1362,8 @@ export namespace Prisma {
     Email: number
     PasswordHash: number
     Role: number
+    Alamat: number
+    JenisKelamin: number
     _all: number
   }
 
@@ -1376,6 +1382,8 @@ export namespace Prisma {
     Email?: true
     PasswordHash?: true
     Role?: true
+    Alamat?: true
+    JenisKelamin?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1384,6 +1392,8 @@ export namespace Prisma {
     Email?: true
     PasswordHash?: true
     Role?: true
+    Alamat?: true
+    JenisKelamin?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1392,6 +1402,8 @@ export namespace Prisma {
     Email?: true
     PasswordHash?: true
     Role?: true
+    Alamat?: true
+    JenisKelamin?: true
     _all?: true
   }
 
@@ -1487,6 +1499,8 @@ export namespace Prisma {
     Email: string
     PasswordHash: string
     Role: string
+    Alamat: string | null
+    JenisKelamin: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1514,6 +1528,8 @@ export namespace Prisma {
     Email?: boolean
     PasswordHash?: boolean
     Role?: boolean
+    Alamat?: boolean
+    JenisKelamin?: boolean
     Pembelian?: boolean | User$PembelianArgs<ExtArgs>
     Reservasi?: boolean | User$ReservasiArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1525,6 +1541,8 @@ export namespace Prisma {
     Email?: boolean
     PasswordHash?: boolean
     Role?: boolean
+    Alamat?: boolean
+    JenisKelamin?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1546,6 +1564,8 @@ export namespace Prisma {
       Email: string
       PasswordHash: string
       Role: string
+      Alamat: string | null
+      JenisKelamin: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1948,6 +1968,8 @@ export namespace Prisma {
     readonly Email: FieldRef<"User", 'String'>
     readonly PasswordHash: FieldRef<"User", 'String'>
     readonly Role: FieldRef<"User", 'String'>
+    readonly Alamat: FieldRef<"User", 'String'>
+    readonly JenisKelamin: FieldRef<"User", 'String'>
   }
     
 
@@ -6240,7 +6262,9 @@ export namespace Prisma {
     Nama: 'Nama',
     Email: 'Email',
     PasswordHash: 'PasswordHash',
-    Role: 'Role'
+    Role: 'Role',
+    Alamat: 'Alamat',
+    JenisKelamin: 'JenisKelamin'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -6298,6 +6322,14 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   /**
    * Field references 
    */
@@ -6350,6 +6382,8 @@ export namespace Prisma {
     Email?: StringFilter<"User"> | string
     PasswordHash?: StringFilter<"User"> | string
     Role?: StringFilter<"User"> | string
+    Alamat?: StringNullableFilter<"User"> | string | null
+    JenisKelamin?: StringNullableFilter<"User"> | string | null
     Pembelian?: PembelianListRelationFilter
     Reservasi?: ReservasiListRelationFilter
   }
@@ -6360,6 +6394,8 @@ export namespace Prisma {
     Email?: SortOrder
     PasswordHash?: SortOrder
     Role?: SortOrder
+    Alamat?: SortOrderInput | SortOrder
+    JenisKelamin?: SortOrderInput | SortOrder
     Pembelian?: PembelianOrderByRelationAggregateInput
     Reservasi?: ReservasiOrderByRelationAggregateInput
   }
@@ -6373,6 +6409,8 @@ export namespace Prisma {
     Nama?: StringFilter<"User"> | string
     PasswordHash?: StringFilter<"User"> | string
     Role?: StringFilter<"User"> | string
+    Alamat?: StringNullableFilter<"User"> | string | null
+    JenisKelamin?: StringNullableFilter<"User"> | string | null
     Pembelian?: PembelianListRelationFilter
     Reservasi?: ReservasiListRelationFilter
   }, "UserID" | "Email">
@@ -6383,6 +6421,8 @@ export namespace Prisma {
     Email?: SortOrder
     PasswordHash?: SortOrder
     Role?: SortOrder
+    Alamat?: SortOrderInput | SortOrder
+    JenisKelamin?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -6399,6 +6439,8 @@ export namespace Prisma {
     Email?: StringWithAggregatesFilter<"User"> | string
     PasswordHash?: StringWithAggregatesFilter<"User"> | string
     Role?: StringWithAggregatesFilter<"User"> | string
+    Alamat?: StringNullableWithAggregatesFilter<"User"> | string | null
+    JenisKelamin?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type ProdukWhereInput = {
@@ -6640,6 +6682,8 @@ export namespace Prisma {
     Email: string
     PasswordHash: string
     Role: string
+    Alamat?: string | null
+    JenisKelamin?: string | null
     Pembelian?: PembelianCreateNestedManyWithoutUserInput
     Reservasi?: ReservasiCreateNestedManyWithoutUserInput
   }
@@ -6650,6 +6694,8 @@ export namespace Prisma {
     Email: string
     PasswordHash: string
     Role: string
+    Alamat?: string | null
+    JenisKelamin?: string | null
     Pembelian?: PembelianUncheckedCreateNestedManyWithoutUserInput
     Reservasi?: ReservasiUncheckedCreateNestedManyWithoutUserInput
   }
@@ -6659,6 +6705,8 @@ export namespace Prisma {
     Email?: StringFieldUpdateOperationsInput | string
     PasswordHash?: StringFieldUpdateOperationsInput | string
     Role?: StringFieldUpdateOperationsInput | string
+    Alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
     Pembelian?: PembelianUpdateManyWithoutUserNestedInput
     Reservasi?: ReservasiUpdateManyWithoutUserNestedInput
   }
@@ -6669,6 +6717,8 @@ export namespace Prisma {
     Email?: StringFieldUpdateOperationsInput | string
     PasswordHash?: StringFieldUpdateOperationsInput | string
     Role?: StringFieldUpdateOperationsInput | string
+    Alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
     Pembelian?: PembelianUncheckedUpdateManyWithoutUserNestedInput
     Reservasi?: ReservasiUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -6679,6 +6729,8 @@ export namespace Prisma {
     Email: string
     PasswordHash: string
     Role: string
+    Alamat?: string | null
+    JenisKelamin?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -6686,6 +6738,8 @@ export namespace Prisma {
     Email?: StringFieldUpdateOperationsInput | string
     PasswordHash?: StringFieldUpdateOperationsInput | string
     Role?: StringFieldUpdateOperationsInput | string
+    Alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -6694,6 +6748,8 @@ export namespace Prisma {
     Email?: StringFieldUpdateOperationsInput | string
     PasswordHash?: StringFieldUpdateOperationsInput | string
     Role?: StringFieldUpdateOperationsInput | string
+    Alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProdukCreateInput = {
@@ -6937,6 +6993,20 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type PembelianListRelationFilter = {
     every?: PembelianWhereInput
     some?: PembelianWhereInput
@@ -6947,6 +7017,11 @@ export namespace Prisma {
     every?: ReservasiWhereInput
     some?: ReservasiWhereInput
     none?: ReservasiWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type PembelianOrderByRelationAggregateInput = {
@@ -6963,6 +7038,8 @@ export namespace Prisma {
     Email?: SortOrder
     PasswordHash?: SortOrder
     Role?: SortOrder
+    Alamat?: SortOrder
+    JenisKelamin?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -6975,6 +7052,8 @@ export namespace Prisma {
     Email?: SortOrder
     PasswordHash?: SortOrder
     Role?: SortOrder
+    Alamat?: SortOrder
+    JenisKelamin?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -6983,6 +7062,8 @@ export namespace Prisma {
     Email?: SortOrder
     PasswordHash?: SortOrder
     Role?: SortOrder
+    Alamat?: SortOrder
+    JenisKelamin?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -7020,6 +7101,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -7296,6 +7394,10 @@ export namespace Prisma {
     set?: string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type PembelianUpdateManyWithoutUserNestedInput = {
     create?: XOR<PembelianCreateWithoutUserInput, PembelianUncheckedCreateWithoutUserInput> | PembelianCreateWithoutUserInput[] | PembelianUncheckedCreateWithoutUserInput[]
     connectOrCreate?: PembelianCreateOrConnectWithoutUserInput | PembelianCreateOrConnectWithoutUserInput[]
@@ -7541,6 +7643,20 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -7583,6 +7699,34 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedEnumKategoriEnumFilter<$PrismaModel = never> = {
@@ -7797,6 +7941,8 @@ export namespace Prisma {
     Email: string
     PasswordHash: string
     Role: string
+    Alamat?: string | null
+    JenisKelamin?: string | null
     Reservasi?: ReservasiCreateNestedManyWithoutUserInput
   }
 
@@ -7806,6 +7952,8 @@ export namespace Prisma {
     Email: string
     PasswordHash: string
     Role: string
+    Alamat?: string | null
+    JenisKelamin?: string | null
     Reservasi?: ReservasiUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -7853,6 +8001,8 @@ export namespace Prisma {
     Email?: StringFieldUpdateOperationsInput | string
     PasswordHash?: StringFieldUpdateOperationsInput | string
     Role?: StringFieldUpdateOperationsInput | string
+    Alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
     Reservasi?: ReservasiUpdateManyWithoutUserNestedInput
   }
 
@@ -7862,6 +8012,8 @@ export namespace Prisma {
     Email?: StringFieldUpdateOperationsInput | string
     PasswordHash?: StringFieldUpdateOperationsInput | string
     Role?: StringFieldUpdateOperationsInput | string
+    Alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
     Reservasi?: ReservasiUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -7978,6 +8130,8 @@ export namespace Prisma {
     Email: string
     PasswordHash: string
     Role: string
+    Alamat?: string | null
+    JenisKelamin?: string | null
     Pembelian?: PembelianCreateNestedManyWithoutUserInput
   }
 
@@ -7987,6 +8141,8 @@ export namespace Prisma {
     Email: string
     PasswordHash: string
     Role: string
+    Alamat?: string | null
+    JenisKelamin?: string | null
     Pembelian?: PembelianUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -8011,6 +8167,8 @@ export namespace Prisma {
     Email?: StringFieldUpdateOperationsInput | string
     PasswordHash?: StringFieldUpdateOperationsInput | string
     Role?: StringFieldUpdateOperationsInput | string
+    Alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
     Pembelian?: PembelianUpdateManyWithoutUserNestedInput
   }
 
@@ -8020,6 +8178,8 @@ export namespace Prisma {
     Email?: StringFieldUpdateOperationsInput | string
     PasswordHash?: StringFieldUpdateOperationsInput | string
     Role?: StringFieldUpdateOperationsInput | string
+    Alamat?: NullableStringFieldUpdateOperationsInput | string | null
+    JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
     Pembelian?: PembelianUncheckedUpdateManyWithoutUserNestedInput
   }
 

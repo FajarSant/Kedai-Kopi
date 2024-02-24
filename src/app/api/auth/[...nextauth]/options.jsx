@@ -8,11 +8,11 @@ const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: {
-          label: "username",
-          type: "text",
-          placeholder: "your-cool-username",
-        },
+    email: {
+      label: "Email",
+      type: "email",
+      placeholder: "your-email@example.com",
+    },
         password: {
           label: "Password:",
           type: "password",
@@ -21,13 +21,18 @@ const authOptions = {
       },
       async authorize(credentials) {
         try {
-          const user = { id: "42", name: "Admin", password: "admin" };
-          if (credentials?.username === user.name && credentials.password === user.password) {
+          // Simulating a user with id, email, and password
+          const user = { id: "42", email: "admin@example.com", password: "admin" };
+          if (
+            credentials?.email === user.email &&
+            credentials.password === user.password
+          ) {
             return Promise.resolve(user);
           } else {
-            return Promise.resolve(null);
+            return Promise.resolve(null); // Invalid credentials
           }
         } catch (error) {
+          console.error("Error during authorization:", error);
           return Promise.resolve(null);
         }
       },
@@ -47,6 +52,9 @@ const authOptions = {
     // Tambahkan provider lain jika dibutuhkan
     // Misalnya: FacebookProvider({ clientId: '...', clientSecret: '...' }),
   ],
+  pages: {
+    signIn: '/auth/signin', // Specify the path to your custom sign-in page
+  },
   callbacks: {
     async jwt({ token, user }) {
       try {

@@ -7,13 +7,13 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const ImageCarousel = ({ images }) => {
   const settings = {
-    // dots: true,
+    dots: true,
     infinite: true,
-    speed: 1500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true, // Mengaktifkan autoplay
-    autoplaySpeed: 5000, // Mengatur kecepatan autoplay (ms)
+    autoplaySpeed: 3000, // Mengatur kecepatan autoplay (ms)
   };
 
   return (
@@ -23,7 +23,7 @@ const ImageCarousel = ({ images }) => {
           <img
             src={image}
             alt={`Slide ${index + 1}`}
-            className=" w-full h-250px] sm:h-[350px] rounded-lg  object-cover"
+            className=" w-full h-250px] sm:h-[400px] rounded-lg  object-cover"
           />
         </div>
       ))}
