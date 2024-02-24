@@ -10,14 +10,19 @@ generator client {
 
 // User model
 model User {
-  UserID      Int      @id @default(autoincrement())
-  Nama        String
-  Email       String   @unique
+  UserID       Int        @id @default(autoincrement())
+  Nama         String
+  Email        String     @unique
   PasswordHash String
-  Role        String
-  Pembelian   Pembelian[]
-  Reservasi   Reservasi[]
+  Role         String
+  Alamat       String?
+  JenisKelamin String?
+  Username     String     @unique 
+  Pembelian    Pembelian[]
+  Reservasi    Reservasi[]
 }
+
+
 
 enum KategoriEnum {
   MAKANAN

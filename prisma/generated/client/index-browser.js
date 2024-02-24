@@ -114,7 +114,8 @@ exports.Prisma.UserScalarFieldEnum = {
   PasswordHash: 'PasswordHash',
   Role: 'Role',
   Alamat: 'Alamat',
-  JenisKelamin: 'JenisKelamin'
+  JenisKelamin: 'JenisKelamin',
+  Username: 'Username'
 };
 
 exports.Prisma.ProdukScalarFieldEnum = {

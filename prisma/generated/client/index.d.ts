@@ -1344,6 +1344,7 @@ export namespace Prisma {
     Role: string | null
     Alamat: string | null
     JenisKelamin: string | null
+    Username: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1354,6 +1355,7 @@ export namespace Prisma {
     Role: string | null
     Alamat: string | null
     JenisKelamin: string | null
+    Username: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1364,6 +1366,7 @@ export namespace Prisma {
     Role: number
     Alamat: number
     JenisKelamin: number
+    Username: number
     _all: number
   }
 
@@ -1384,6 +1387,7 @@ export namespace Prisma {
     Role?: true
     Alamat?: true
     JenisKelamin?: true
+    Username?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1394,6 +1398,7 @@ export namespace Prisma {
     Role?: true
     Alamat?: true
     JenisKelamin?: true
+    Username?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1404,6 +1409,7 @@ export namespace Prisma {
     Role?: true
     Alamat?: true
     JenisKelamin?: true
+    Username?: true
     _all?: true
   }
 
@@ -1501,6 +1507,7 @@ export namespace Prisma {
     Role: string
     Alamat: string | null
     JenisKelamin: string | null
+    Username: string
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1530,6 +1537,7 @@ export namespace Prisma {
     Role?: boolean
     Alamat?: boolean
     JenisKelamin?: boolean
+    Username?: boolean
     Pembelian?: boolean | User$PembelianArgs<ExtArgs>
     Reservasi?: boolean | User$ReservasiArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1543,6 +1551,7 @@ export namespace Prisma {
     Role?: boolean
     Alamat?: boolean
     JenisKelamin?: boolean
+    Username?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1566,6 +1575,7 @@ export namespace Prisma {
       Role: string
       Alamat: string | null
       JenisKelamin: string | null
+      Username: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1970,6 +1980,7 @@ export namespace Prisma {
     readonly Role: FieldRef<"User", 'String'>
     readonly Alamat: FieldRef<"User", 'String'>
     readonly JenisKelamin: FieldRef<"User", 'String'>
+    readonly Username: FieldRef<"User", 'String'>
   }
     
 
@@ -6264,7 +6275,8 @@ export namespace Prisma {
     PasswordHash: 'PasswordHash',
     Role: 'Role',
     Alamat: 'Alamat',
-    JenisKelamin: 'JenisKelamin'
+    JenisKelamin: 'JenisKelamin',
+    Username: 'Username'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -6384,6 +6396,7 @@ export namespace Prisma {
     Role?: StringFilter<"User"> | string
     Alamat?: StringNullableFilter<"User"> | string | null
     JenisKelamin?: StringNullableFilter<"User"> | string | null
+    Username?: StringFilter<"User"> | string
     Pembelian?: PembelianListRelationFilter
     Reservasi?: ReservasiListRelationFilter
   }
@@ -6396,6 +6409,7 @@ export namespace Prisma {
     Role?: SortOrder
     Alamat?: SortOrderInput | SortOrder
     JenisKelamin?: SortOrderInput | SortOrder
+    Username?: SortOrder
     Pembelian?: PembelianOrderByRelationAggregateInput
     Reservasi?: ReservasiOrderByRelationAggregateInput
   }
@@ -6403,6 +6417,7 @@ export namespace Prisma {
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     UserID?: number
     Email?: string
+    Username?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -6413,7 +6428,7 @@ export namespace Prisma {
     JenisKelamin?: StringNullableFilter<"User"> | string | null
     Pembelian?: PembelianListRelationFilter
     Reservasi?: ReservasiListRelationFilter
-  }, "UserID" | "Email">
+  }, "UserID" | "Email" | "Username">
 
   export type UserOrderByWithAggregationInput = {
     UserID?: SortOrder
@@ -6423,6 +6438,7 @@ export namespace Prisma {
     Role?: SortOrder
     Alamat?: SortOrderInput | SortOrder
     JenisKelamin?: SortOrderInput | SortOrder
+    Username?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -6441,6 +6457,7 @@ export namespace Prisma {
     Role?: StringWithAggregatesFilter<"User"> | string
     Alamat?: StringNullableWithAggregatesFilter<"User"> | string | null
     JenisKelamin?: StringNullableWithAggregatesFilter<"User"> | string | null
+    Username?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type ProdukWhereInput = {
@@ -6684,6 +6701,7 @@ export namespace Prisma {
     Role: string
     Alamat?: string | null
     JenisKelamin?: string | null
+    Username: string
     Pembelian?: PembelianCreateNestedManyWithoutUserInput
     Reservasi?: ReservasiCreateNestedManyWithoutUserInput
   }
@@ -6696,6 +6714,7 @@ export namespace Prisma {
     Role: string
     Alamat?: string | null
     JenisKelamin?: string | null
+    Username: string
     Pembelian?: PembelianUncheckedCreateNestedManyWithoutUserInput
     Reservasi?: ReservasiUncheckedCreateNestedManyWithoutUserInput
   }
@@ -6707,6 +6726,7 @@ export namespace Prisma {
     Role?: StringFieldUpdateOperationsInput | string
     Alamat?: NullableStringFieldUpdateOperationsInput | string | null
     JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
+    Username?: StringFieldUpdateOperationsInput | string
     Pembelian?: PembelianUpdateManyWithoutUserNestedInput
     Reservasi?: ReservasiUpdateManyWithoutUserNestedInput
   }
@@ -6719,6 +6739,7 @@ export namespace Prisma {
     Role?: StringFieldUpdateOperationsInput | string
     Alamat?: NullableStringFieldUpdateOperationsInput | string | null
     JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
+    Username?: StringFieldUpdateOperationsInput | string
     Pembelian?: PembelianUncheckedUpdateManyWithoutUserNestedInput
     Reservasi?: ReservasiUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -6731,6 +6752,7 @@ export namespace Prisma {
     Role: string
     Alamat?: string | null
     JenisKelamin?: string | null
+    Username: string
   }
 
   export type UserUpdateManyMutationInput = {
@@ -6740,6 +6762,7 @@ export namespace Prisma {
     Role?: StringFieldUpdateOperationsInput | string
     Alamat?: NullableStringFieldUpdateOperationsInput | string | null
     JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
+    Username?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -6750,6 +6773,7 @@ export namespace Prisma {
     Role?: StringFieldUpdateOperationsInput | string
     Alamat?: NullableStringFieldUpdateOperationsInput | string | null
     JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
+    Username?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProdukCreateInput = {
@@ -7040,6 +7064,7 @@ export namespace Prisma {
     Role?: SortOrder
     Alamat?: SortOrder
     JenisKelamin?: SortOrder
+    Username?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -7054,6 +7079,7 @@ export namespace Prisma {
     Role?: SortOrder
     Alamat?: SortOrder
     JenisKelamin?: SortOrder
+    Username?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -7064,6 +7090,7 @@ export namespace Prisma {
     Role?: SortOrder
     Alamat?: SortOrder
     JenisKelamin?: SortOrder
+    Username?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -7943,6 +7970,7 @@ export namespace Prisma {
     Role: string
     Alamat?: string | null
     JenisKelamin?: string | null
+    Username: string
     Reservasi?: ReservasiCreateNestedManyWithoutUserInput
   }
 
@@ -7954,6 +7982,7 @@ export namespace Prisma {
     Role: string
     Alamat?: string | null
     JenisKelamin?: string | null
+    Username: string
     Reservasi?: ReservasiUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -8003,6 +8032,7 @@ export namespace Prisma {
     Role?: StringFieldUpdateOperationsInput | string
     Alamat?: NullableStringFieldUpdateOperationsInput | string | null
     JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
+    Username?: StringFieldUpdateOperationsInput | string
     Reservasi?: ReservasiUpdateManyWithoutUserNestedInput
   }
 
@@ -8014,6 +8044,7 @@ export namespace Prisma {
     Role?: StringFieldUpdateOperationsInput | string
     Alamat?: NullableStringFieldUpdateOperationsInput | string | null
     JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
+    Username?: StringFieldUpdateOperationsInput | string
     Reservasi?: ReservasiUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -8132,6 +8163,7 @@ export namespace Prisma {
     Role: string
     Alamat?: string | null
     JenisKelamin?: string | null
+    Username: string
     Pembelian?: PembelianCreateNestedManyWithoutUserInput
   }
 
@@ -8143,6 +8175,7 @@ export namespace Prisma {
     Role: string
     Alamat?: string | null
     JenisKelamin?: string | null
+    Username: string
     Pembelian?: PembelianUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -8169,6 +8202,7 @@ export namespace Prisma {
     Role?: StringFieldUpdateOperationsInput | string
     Alamat?: NullableStringFieldUpdateOperationsInput | string | null
     JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
+    Username?: StringFieldUpdateOperationsInput | string
     Pembelian?: PembelianUpdateManyWithoutUserNestedInput
   }
 
@@ -8180,6 +8214,7 @@ export namespace Prisma {
     Role?: StringFieldUpdateOperationsInput | string
     Alamat?: NullableStringFieldUpdateOperationsInput | string | null
     JenisKelamin?: NullableStringFieldUpdateOperationsInput | string | null
+    Username?: StringFieldUpdateOperationsInput | string
     Pembelian?: PembelianUncheckedUpdateManyWithoutUserNestedInput
   }
 
