@@ -1,7 +1,7 @@
 // ProductList.js
 "use client"
 import React, { useEffect, useState } from 'react';
-import ProductCard from './Components/ProdukCard';
+import ProductCard from './Makanan/Components/ProdukCard';
 
 const Product = () => {
   const [products, setProducts] = useState([]);
