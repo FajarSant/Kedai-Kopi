@@ -1,13 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    async rewrites() {
-    return [
-      {
-        source: '/api/product/:id',
-        destination: '/api/product/:id',
-      },
-    ];
-  },
-};
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
+}
 
-export default nextConfig;
+module.exports = nextConfig
