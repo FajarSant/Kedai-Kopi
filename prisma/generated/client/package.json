@@ -69,5 +69,8 @@
     "./*": "./*"
   },
   "version": "5.9.1",
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "next": "^14.1.0"
+  }
 }
