@@ -1,6 +1,6 @@
-"use client"
-import React, { useState } from 'react';
-import Link from 'next/link';
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
 
 const ProductCard = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -13,7 +13,9 @@ const ProductCard = ({ product }) => {
     setIsHovered(false);
   };
 
-  const imageSrc = product.image ? `/img/${product.image}` : '/img/notfound.jpg';
+  const imageSrc = product.image
+    ? `/img/${product.image}`
+    : "/img/notfound.jpg";
 
   return (
     <div
@@ -27,23 +29,27 @@ const ProductCard = ({ product }) => {
       <img
         src={imageSrc}
         alt={product.name}
-        className={`rounded w-full object-cover transition-all duration-300 ${isHovered ? 'h-28' : 'h-full'}`}
+        className={`rounded w-full object-cover transition-all duration-300 ${
+          isHovered ? "h-28" : "h-full"
+        }`}
       />
       {isHovered && (
         <div className="flex flex-col justify-between text-sm flex-grow p-1">
-          <div className='pb-2'>
+          <div className="pb-2">
             <h1 className=" sm:text-lg text-xs justify-start text-center font-semibold text-gray-800">
               {product.NamaProduk}
             </h1>
           </div>
-          <div className=' sm:h-24 h-20'> 
-          <p className="text-gray-600 sm:text-lg text-xs">{product.Deskripsi}</p>
+          <div className=" sm:h-24 h-20">
+            <p className="text-gray-600 sm:text-lg text-xs">
+              {product.Deskripsi}
+            </p>
           </div>
           <div className="text-xs py-1 text-center justify-center ">
             <button className="bg-blue-500 text-white rounded p-1 mr-1 sm:p-2 ">
               Buy Now
             </button>
-            <Link href={`/Produk/${product.id}`}>
+            <Link href={`/Produk/${product.ProdukID}`}>
               <span className="bg-gray-500 text-white rounded p-1 sm:p-2 ">
                 Detail
               </span>
