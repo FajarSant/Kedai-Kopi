@@ -1,3 +1,4 @@
+// File: /C:/Users/LENOVO/OneDrive/Desktop/coffee-shop/src/app/api/auth/[...nextauth]/options.js
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import GithubProvider from 'next-auth/providers/github';
@@ -52,9 +53,6 @@ const authOptions = {
     // Tambahkan provider lain jika dibutuhkan
     // Misalnya: FacebookProvider({ clientId: '...', clientSecret: '...' }),
   ],
-  pages: {
-    signIn: '/auth/signin', // Specify the path to your custom sign-in page
-  },
   callbacks: {
     async jwt({ token, user }) {
       try {
