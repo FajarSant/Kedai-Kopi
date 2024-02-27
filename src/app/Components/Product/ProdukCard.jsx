@@ -43,7 +43,7 @@ const ProductCard = ({ product }) => {
             <button className="bg-blue-500 text-white rounded p-1 mr-1 sm:p-2 ">
               Buy Now
             </button>
-            <Link href={`/Product/${product.id}`}>
+            <Link href={`/Produk/${product.id}`}>
               <span className="bg-gray-500 text-white rounded p-1 sm:p-2 ">
                 Detail
               </span>
