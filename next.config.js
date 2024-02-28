@@ -1,6 +1,8 @@
-module.exports = {
-    reactStrictMode: true,
-    pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
-    // ... pengaturan lainnya
-  };
-  
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+   experimental: {
+    target: 'serverless',
+  },
+};
+
+module.exports = nextConfig;

@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "routes": [
+      { "src": "/api/product", "dest": "/pages/api/product.js" },
+      { "src": "/api/product/(.*)", "dest": "/pages/api/product/$1" },
+      { "src": "/(.*)", "dest": "/$1" }
+    ]
+  }
+  

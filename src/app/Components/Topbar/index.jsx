@@ -1,6 +1,7 @@
 // TopBar.jsx
 import React from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
+import { LuLayoutDashboard } from "react-icons/lu";
 import Link from 'next/link';
 import UserActionsButton from './UserActionsButton';
 import SearchBar from './Searchbar'; 
@@ -15,6 +16,11 @@ const TopBar = () => {
         <Link href="/Shop">
           <span className="hover:text-gray-400">
             <FiShoppingCart />
+          </span>
+        </Link>
+        <Link href="/Dashboard">
+          <span className="hover:text-gray-400">
+          <LuLayoutDashboard />
           </span>
         </Link>
         <UserActionsButton />
