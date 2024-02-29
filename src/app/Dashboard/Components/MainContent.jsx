@@ -7,8 +7,8 @@ import Menu from './MenuTabel';
 const HomeContent = () => {
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Home Content</h2>
-      <p>This is the Home page content.</p>
+      <h2 className="text-2xl font-bold justify-start text-center mb-4">Home Content</h2>
+      <p className='justify-center text-center'>Halaman ini Belum Tersedia.</p>
     </div>
   );
 };
@@ -19,9 +19,9 @@ const HomeContent = () => {
 
 const RecapContent = () => {
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Recap Content</h2>
-      <p>This is the Recap page content.</p>
+    <div className=''>
+      <h2 className="text-2xl font-bold justify-start text-center mb-4">Recap Content</h2>
+      <p className='justify-center text-center'>Halaman ini Belum Tersedia.</p>
     </div>
   );
 };

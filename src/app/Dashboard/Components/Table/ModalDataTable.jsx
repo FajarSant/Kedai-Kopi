@@ -25,11 +25,12 @@ const ModalDataTable = ({ closeModal, reservationData, handleCompleteOrder }) =>
         {reservationData ? (
           <div>
             <p>
-              <span className="font-bold">Table Name:</span> {reservationData.tableName}
+              <span className="font-bold">Table Name:</span> {reservationData.name}
             </p>
             <p>
-              <span className="font-bold">Number of People:</span> {reservationData.numberOfPeople}
+              <span className="font-bold">Phone Number:</span> {reservationData.phoneNumber}
             </p>
+            {/* Add more fields as needed */}
             <button
               className="bg-green-500 text-white px-4 py-2 rounded-md mt-4"
               onClick={completeOrder}

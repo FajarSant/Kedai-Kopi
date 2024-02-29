@@ -1,8 +1,8 @@
 // components/MainContentTable.js
 import React, { useState } from 'react';
 import { FaTable } from 'react-icons/fa';
-import ModalInput from './ModalTableInput';
-import ModalDataTable from './ModelDataTable';
+import ModalInput from './Table/ModalInputTable';
+import ModalDataTable from './Table/ModalDataTable';
 
 const MainContentTable = () => {
   const [isInputModalOpen, setIsInputModalOpen] = useState(false);

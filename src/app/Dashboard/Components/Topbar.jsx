@@ -1,6 +1,7 @@
 // Topbar.js
 import React, { useState, useEffect } from 'react';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaBars } from 'react-icons/fa';
+import { RxCross2 } from 'react-icons/rx';
 
 const UserIcon = () => {
   return (
@@ -33,10 +34,15 @@ const RealtimeClock = () => {
   );
 };
 
-const Topbar = () => {
+const Topbar = ({ onToggleSidebar, isSidebarOpen }) => {
   return (
-    <div className="flex justify-between bg-slate-100 p-3 rounded-sm">
-      <p></p>
+    <div className="flex bg-white justify-between p-3 mb-4 rounded-2xl">
+        {isSidebarOpen ? (
+          <RxCross2 size={24} onClick={onToggleSidebar} style={{ cursor: 'pointer' }} />
+        ) : (
+          <FaBars size={24} onClick={onToggleSidebar} style={{ cursor: 'pointer' }} />
+        )}
+      <p className=' block sm:hidden'></p>
       <RealtimeClock />
       <UserIcon />
     </div>

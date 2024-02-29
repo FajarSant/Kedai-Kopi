@@ -70,3 +70,4 @@ const product = await prisma.produk.create({
     await prisma.$disconnect();
   }
 }
+

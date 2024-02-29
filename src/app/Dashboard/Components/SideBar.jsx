@@ -15,7 +15,7 @@ const Sidebar = ({ selectedMenu, onMenuClick }) => {
   ];
 
   return (
-    <div className=" h-full text-black p-4 flex flex-col border-r">
+    <div className=" h-full bg-white text-black p-4 flex flex-col border-r rounded-2xl">
 
       <ul className="flex flex-col space-y-5 py-5">
         {" "}
