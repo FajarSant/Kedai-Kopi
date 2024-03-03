@@ -4,7 +4,8 @@ import Link from 'next/link';
 
 const Kategori = () => {
   return (
-    <div className="sm:flex grid grid-cols-3 sm:space-x-6 p-2 items-center justify-center  mt-5 ">
+    <div className="flex justify-center text-center items-center">
+      <div className='grid grid-cols-3 sm:grid-cols-6 gap-2'>
       <Link href="/Produk/Makanan">
         <div className=" bg-transparent p-2 rounded-lg shadow-lg text-center text-sm transition-transform transform hover:scale-110 w-20 h-20">
           <div className="rounded-md mb-2 flex items-center justify-center">
@@ -77,6 +78,7 @@ const Kategori = () => {
           <span className="">Paket</span>
         </div>
       </Link>
+      </div>
     </div>
   );
 };

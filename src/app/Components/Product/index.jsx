@@ -25,9 +25,8 @@ const ProductList = () => {
   return (
     <div>
       <Header />
-      <div className="p-4 mt-5"><Menu /></div>
-        {/* <h1 className=' font-bold ml-4 sm:ml-10'>PRODUCT</h1> */}
-      <div className="container mx-auto h-full my-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2 sm:p-4">
+      <Menu />
+      <div className=" mx-auto h-full my-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 p-2 sm:p-4">
         {products.map((product) => (
           <ProductCard key={product.ProdukID} product={product} />
         ))}

@@ -13,9 +13,9 @@ const Header = () => {
   return (
     <div>
 
-    <div className="relative items-center justify-center mb-4 p-2 sm:p-4 h-[130px] sm:h-[400px]  bg-center w-[90%] sm:w-full mx-auto rounded-xl  shadow-sm">
-      <ImageCarousel images={carouselImages} />
-    </div>
+      <div className=" items-center justify-center mb-4 p-2 sm:p-4   bg-center w-[90%] sm:w-full mx-auto rounded-xl  ">
+        <ImageCarousel images={carouselImages} />
+      </div>
     </div>
   );
 };
