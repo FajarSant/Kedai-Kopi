@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ConfirmationModal from '../Menu/ConfirmasiModal';
-import EditModal from '../Menu/EditModal';
-import AddModal from '../Menu/ModalForm';
+import ConfirmationModal from './ConfirmasiModal';
+import EditModal from './EditModal';
+import AddModal from './ModalForm';
+import './Produk.css';
 
 const Produk = ({ onEdit }) => {
     const [products, setProducts] = useState([]);
@@ -14,7 +15,8 @@ const Produk = ({ onEdit }) => {
     const [isEditModalOpen, setEditModalOpen] = useState(false);
     const [isAddModalOpen, setAddModalOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
+    const itemsPerPageMobile = 5; // Menentukan jumlah item untuk perangkat seluler
+    const itemsPerPageDesktop = 10; // Menentukan jumlah item untuk perangkat desktop dan tablet
 
     const fetchData = async () => {
         try {
@@ -140,32 +142,22 @@ const Produk = ({ onEdit }) => {
     };
 
     const totalProducts = products || [];
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const indexOfLastItem = currentPage * (window.innerWidth < 768 ? itemsPerPageMobile : itemsPerPageDesktop);
+    const indexOfFirstItem = indexOfLastItem - (window.innerWidth < 768 ? itemsPerPageMobile : itemsPerPageDesktop);
     const currentItems = totalProducts.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(totalProducts.length / itemsPerPage);
+    const totalPages = Math.ceil(totalProducts.length / (window.innerWidth < 768 ? itemsPerPageMobile : itemsPerPageDesktop));
 
     const ProdukTable = () => {
         return (
-            <div class="relative overflow-x-auto shadow-md rounded-lg">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+            
+            <div className="relative overflow-x-auto shadow-md rounded-lg">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <caption className="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                         Our products
-                        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of Flowbite products designed to help you work and play, stay organized, get answers, keep in touch, grow your business, and more.</p>
-                        <div className="flex justify-between mt-4">
-                <button
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                >
-                    Previous
-                </button>
-                <button
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                >
-                    Next
-                </button>
-            </div>
+                        <p className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                            Browse a list of Flowbite products designed to help you work and play, stay organized, get answers, keep in touch, grow your business, and more.
+                        </p>
+                        <button type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-5" onClick={openAddModal}>Tambahkan</button>
                     </caption>
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -199,16 +191,16 @@ const Produk = ({ onEdit }) => {
                         {currentItems.map((product, index) => (
                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={index}>
                                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {(currentPage - 1) * itemsPerPage + index + 1}
+                                    {(currentPage - 1) * (window.innerWidth < 768 ? itemsPerPageMobile : itemsPerPageDesktop) + index + 1}
                                 </td>
                                 <td className="px-6 py-4">{product.NamaProduk}</td>
-                                <td className="px-6 py-4">{product.Diskripsi}</td>
+                                <td className="px-6 py-4">{product.Deskripsi}</td>
                                 <td className="px-6 py-4">{product.Harga}</td>
                                 <td className="px-6 py-4">{product.Stok}</td>
                                 <td className="px-6 py-4">{product.Kategori}</td>
                                 <td className="px-6 py-4 text-right">
                                     <a
-                                        href="#"
+                                        href="javascript:void(0)"
                                         className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                         onClick={() => openEditModal(product.ProdukID)}
                                     >
@@ -217,7 +209,7 @@ const Produk = ({ onEdit }) => {
                                 </td>
                                 <td className="px-6 py-4 text-right">
                                     <a
-                                        href="#"
+                                        href="javascript:void(0)"
                                         className="font-medium text-red-600 dark:text-red-500 hover:underline"
                                         onClick={() => openDeleteModal(product.ProdukID)}
                                     >
@@ -227,6 +219,7 @@ const Produk = ({ onEdit }) => {
                             </tr>
                         ))}
                     </tbody>
+
                 </table>
             </div>
         );
@@ -235,8 +228,27 @@ const Produk = ({ onEdit }) => {
     return (
         <div className="overflow-x-auto">
             <ProdukTable />
-
-
+            <ToastContainer />
+            <div className="flex justify-between mt-4">
+                <div>
+                    <button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="mr-2"
+                    >
+                        Previous
+                    </button>
+                    <button
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                    >
+                        Next
+                    </button>
+                </div>
+                <div>
+                    Page {currentPage} of {totalPages}
+                </div>
+            </div>
             <ConfirmationModal
                 isOpen={isDeleteModalOpen}
                 onCancel={closeDeleteModal}

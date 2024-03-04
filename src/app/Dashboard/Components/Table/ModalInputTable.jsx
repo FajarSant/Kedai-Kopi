@@ -23,8 +23,8 @@ const ModalInput = ({ closeModal, handleFormSubmit }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
-      <div className="bg-white w-96 p-6 rounded-md shadow-md">
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 z-50 bg-opacity-70 backdrop-filter backdrop-blur-md">
+      <div className="bg-white w-full md:w-96 p-6 rounded-md shadow-md">
         <h2 className="text-xl font-bold mb-4">Reservation Form</h2>
 
         <label className="block mb-2">
@@ -34,7 +34,7 @@ const ModalInput = ({ closeModal, handleFormSubmit }) => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full border rounded-md py-1 px-2"
+            className="w-full md:w-64 border rounded-md py-1 px-2"
           />
         </label>
 
@@ -45,7 +45,7 @@ const ModalInput = ({ closeModal, handleFormSubmit }) => {
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleChange}
-            className="w-full border rounded-md py-1 px-2"
+            className="w-full md:w-64 border rounded-md py-1 px-2"
           />
         </label>
 

@@ -28,9 +28,9 @@ const AddModal = ({ isOpen, onClose, onAdd }) => {
 
   return (
     <div className={`modal ${isOpen ? 'block' : 'hidden'}`}>
-      <div className="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-      <div className="modal-container fixed w-full h-full top-0 left-0 flex items-center justify-center">
-        <div className="modal-content bg-slate-200 w-1/3 p-4 rounded-lg shadow-lg">
+      <div className="modal-overlay fixed w-full h-full bg-gray-900 opacity-50"></div>
+      <div className="modal-container fixed w-full h-full top-0 left-0 flex items-center justify-center bg-opacity-70 backdrop-filter backdrop-blur-md">
+        <div className="modal-content bg-slate-200 w-11/12 md:w-1/3 p-4 rounded-lg shadow-lg">
           <div className="flex justify-end">
             <button className="text-red-500 hover:text-red-700" onClick={onClose}>
               Close

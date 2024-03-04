@@ -2,7 +2,7 @@
 import React from 'react';
 import PaymentContent from './Payment';
 import Table from './Table/Table';
-import Menu from '../Components/Tabel/index';
+import Menu from '../Components/Menu/index';
 
 const HomeContent = () => {
   return (

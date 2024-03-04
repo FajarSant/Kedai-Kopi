@@ -9,10 +9,10 @@ const ModalDataTable = ({ closeModal, reservationData, handleCompleteOrder }) =>
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50"
+      className="fixed inset-0 flex items-center justify-center bg-gray-800  z-50 bg-opacity-70 backdrop-filter backdrop-blur-md"
       onClick={closeModal}
     >
-      <div className="bg-white w-1/2 p-6 rounded-md shadow-md" onClick={(e) => e.stopPropagation()}>
+      <div className="bg-white w-full md:w-1/2 lg:w-1/3 p-6 rounded-md shadow-md" onClick={(e) => e.stopPropagation()}>
         <div className="flex justify-end">
           <button
             className="text-gray-500 hover:text-gray-700 focus:outline-none"

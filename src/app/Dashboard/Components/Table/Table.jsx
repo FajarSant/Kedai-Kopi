@@ -1,27 +1,98 @@
-import React from 'react';
-import { MdTableBar } from "react-icons/md";
+// components/MainContentTable.js
+import React, { useState } from 'react';
+import { FaTable } from 'react-icons/fa';
+import ModalInput from './ModalInputTable';
+import ModalDataTable from './ModalDataTable';
 
-const Table = () => {
+const MainContentTable = () => {
+  const [isInputModalOpen, setIsInputModalOpen] = useState(false);
+  const [isDataTableModalOpen, setIsDataTableModalOpen] = useState(false);
+  const [selectedTable, setSelectedTable] = useState(null);
+  const [reservationData, setReservationData] = useState({});
+
+  const openInputModal = () => {
+    setIsInputModalOpen(true);
+  };
+
+  const closeInputModal = () => {
+    setIsInputModalOpen(false);
+  };
+
+  const openDataTableModal = () => {
+    setIsDataTableModalOpen(true);
+  };
+
+  const closeDataTableModal = () => {
+    setIsDataTableModalOpen(false);
+  };
+
+  const handleFormSubmit = (data) => {
+    setReservationData((prevData) => ({
+      ...prevData,
+      [selectedTable]: data,
+    }));
+    setSelectedTable(null);
+    closeInputModal();
+  };
+
+  const handleCompleteOrder = () => {
+    // Add logic to handle completing the order for the selected table
+    setReservationData((prevData) => {
+      const newData = { ...prevData };
+      delete newData[selectedTable];
+      return newData;
+    });
+    setSelectedTable(null);
+    closeDataTableModal();
+  };
+
+  // Assuming you want to display 12 tables
+  const tableCount = 12;
+  const tables = Array.from({ length: tableCount }, (_, index) => index + 1);
+
   return (
-    <div className='bg-white p-4 rounded-xl h-auto w-auto'>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-center text-center">
-        <div className='bg-slate-200 rounded-lg p-4'>
-          <div className='flex items-center justify-center mb-2'>
-            <MdTableBar className='text-4xl text-gray-700' />
-          </div>
-          <h1 className='text-xl font-semibold mb-2'>Tabel</h1>
-          <p className='text-gray-600'>Status:</p>
-        </div>
-        <div className='bg-slate-200 rounded-lg p-4'>
-          <div className='flex items-center justify-center mb-2'>
-            <MdTableBar className='text-4xl text-gray-700' />
-          </div>
-          <h1 className='text-xl font-semibold mb-2'>Tabel</h1>
-          <p className='text-gray-600'>Status:</p>
-        </div>
+<div className="grid grid-cols-3 sm:grid-cols-5 gap-4 p-4 bg-gray-100">
+  {tables.map((tableNumber) => (
+    <div
+      key={tableNumber}
+      className={`w-full p-4 cursor-pointer mb-4 border rounded-md ${
+        reservationData[tableNumber] ? 'bg-green-100' : 'bg-white shadow-md hover:shadow-lg'
+      }`}
+      onClick={() => {
+        setSelectedTable(tableNumber);
+        reservationData[tableNumber] ? openDataTableModal() : openInputModal();
+      }}
+    >
+      <div className="flex items-center justify-center mb-2">
+        <FaTable className="text-4xl" />
       </div>
+      <p className="text-center text-xl font-bold mb-2">Table {tableNumber}</p>
+      <p
+        className={`text-center text-sm ${
+          reservationData[tableNumber] ? 'text-green-500' : ''
+        }`}
+      >
+        {reservationData[tableNumber] ? 'Status: Reserved' : 'Status: Available'}
+      </p>
     </div>
-  );
-}
+  ))}
+  {/* Modals */}
+  {isInputModalOpen && (
+    <ModalInput
+      closeModal={closeInputModal}
+      handleFormSubmit={(data) => handleFormSubmit(data)}
+    />
+  )}
+  {isDataTableModalOpen && (
+    <ModalDataTable
+      closeModal={closeDataTableModal}
+      reservationData={reservationData[selectedTable]}
+      handleCompleteOrder={handleCompleteOrder}
+    />
+  )}
+</div>
 
-export default Table;
+  );
+};
+
+export default MainContentTable;
