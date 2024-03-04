@@ -14,7 +14,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className=" bg-slate-300">
+    <div className=" bg-slate-300 ">
       <div className="fixed sm:hidden block inset-x-0 bottom-0 z-10">
         <SidebarHP selectedMenu={selectedMenu} onMenuClick={handleMenuClick} />
       </div>
@@ -22,7 +22,7 @@ const Dashboard = () => {
         <diV className="sm:block hidden">
         <Sidebar selectedMenu={selectedMenu} onMenuClick={handleMenuClick} />
         </diV>
-        <div className="flex-1 flex flex-col px-2">
+        <div className="flex-1 flex flex-col px-2 overflow-y-auto">
           <Topbar />
           <MainContent selectedMenu={selectedMenu} />
         </div>
