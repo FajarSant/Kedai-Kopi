@@ -1,8 +1,8 @@
 // components/MainContent.js
 import React from 'react';
 import PaymentContent from './Payment';
-import Table from './Table';
-import Menu from './MenuTabel';
+import Table from './Table/Table';
+import Menu from './Produk/index';
 
 const HomeContent = () => {
   return (
@@ -25,6 +25,7 @@ const RecapContent = () => {
     </div>
   );
 };
+
 
 const MainContent = ({ selectedMenu }) => {
   switch (selectedMenu) {

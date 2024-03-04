@@ -11,36 +11,36 @@ generator client {
 
 // User model
 model User {
-  UserID       Int       @id @default(autoincrement())
+  UserID       Int         @id @default(autoincrement())
   Nama         String
-  Email        String    @unique
+  Email        String      @unique
   PasswordHash String
   Role         String
   Alamat       String?
   JenisKelamin String?
-  Username     String    @unique 
+  Username     String      @unique
   Pembelian    Pembelian[]
   Reservasi    Reservasi[]
 }
 
 // Produk model
 model Produk {
-  ProdukID    Int       @id @default(autoincrement())
-  NamaProduk  String
-  Deskripsi   String
-  Harga       Float
-  Stok        Int
-  Kategori    KategoriEnum
+  ProdukID        Int               @id @default(autoincrement())
+  NamaProduk      String
+  Deskripsi       String
+  Harga           Float
+  Stok            Int
+  Kategori        KategoriEnum
   DetailPembelian DetailPembelian[]
 }
 
 // Pembelian model
 model Pembelian {
-  PembelianID      Int       @id @default(autoincrement())
+  PembelianID      Int               @id @default(autoincrement())
   TanggalPembelian DateTime
   UserID           Int
   TotalHarga       Float
-  User             User      @relation(fields: [UserID], references: [UserID])
+  User             User              @relation(fields: [UserID], references: [UserID])
   DetailPembelian  DetailPembelian[]
 }
 
@@ -57,12 +57,23 @@ model DetailPembelian {
 
 // Reservasi model
 model Reservasi {
-  ReservasiID      Int       @id @default(autoincrement())
+  ReservasiID      Int      @id @default(autoincrement())
   TanggalReservasi DateTime
   UserID           Int
   JumlahOrang      Int
   Status           String
-  User             User      @relation(fields: [UserID], references: [UserID])
+  User             User     @relation(fields: [UserID], references: [UserID])
+}
+
+// Meja
+model Meja {
+  MejaID Int        @id @default(autoincrement())
+  Status StatusEnum
+}
+
+enum StatusEnum {
+  Tersedia
+  Dipesan
 }
 
 // Enumerations untuk PostgreSQL
